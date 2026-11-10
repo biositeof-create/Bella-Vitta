@@ -59,14 +59,14 @@ const DEFAULT_CFG = {
   iniciado: false
 };
 const DEFAULT_PRODS = [
-  { id: 'p1', ordem: 1, nome: 'Blusa Decote Quadrado', tipo: 'blusa',    preco: 129, cor: '#1E1E22', corCat: 'neutro', estilo: 'minimal',   ocasiao: 'trabalho', caimento: 'justo',   corNome: 'Preto',          desc: 'Manga curta e cintura marcada com cinto.', foto: IMG.t1 },
-  { id: 'p2', ordem: 2, nome: 'Calça Alfaiataria Bege', tipo: 'calca',   preco: 219, cor: '#D9C2A5', corCat: 'neutro', estilo: 'minimal',   ocasiao: 'trabalho', caimento: 'solto',   corNome: 'Bege',           desc: 'Cintura alta com pregas.', foto: IMG.t2 },
-  { id: 'p3', ordem: 3, nome: 'Vestido Tubinho Chocolate', tipo: 'vestido', preco: 259, cor: '#5A2E1B', corCat: 'terra',  estilo: 'ousado',    ocasiao: 'festa',    caimento: 'justo',   corNome: 'Chocolate',      desc: 'Modelagem tomara que caia.', foto: IMG.t3 },
-  { id: 'p4', ordem: 4, nome: 'Conjunto Alfaiataria Creme', tipo: 'conjunto', preco: 349, cor: '#EADBC8', corCat: 'neutro', estilo: 'minimal', ocasiao: 'trabalho', caimento: 'solto', corNome: 'Creme',        desc: 'Blazer e calça que combinam.', foto: IMG.t4 },
-  { id: 'p5', ordem: 5, nome: 'Blusa Manga Bufante', tipo: 'blusa',     preco: 139, cor: '#D6246E', corCat: 'vivo',   estilo: 'romantico', ocasiao: 'passeio',  caimento: 'justo',   corNome: 'Pink',           desc: 'Decote quadrado e mangas bufantes.', foto: IMG.t5 },
-  { id: 'p6', ordem: 6, nome: 'Vestido Floral Rosé',  tipo: 'vestido',  preco: 289, cor: '#E98CAB', corCat: 'rosa',   estilo: 'romantico', ocasiao: 'festa',    caimento: 'cintura', corNome: 'Rosé',           desc: '', foto: '' },
-  { id: 'p7', ordem: 7, nome: 'Saia Midi Terracota',  tipo: 'saia',     preco: 179, cor: '#C4551E', corCat: 'terra',  estilo: 'casual',    ocasiao: 'dia',      caimento: 'cintura', corNome: 'Terracota',      desc: '', foto: '' },
-  { id: 'p8', ordem: 8, nome: 'Jeans Reta Clássica',  tipo: 'calca',    preco: 259, cor: '#5B7DA8', corCat: 'neutro', estilo: 'casual',    ocasiao: 'dia',      caimento: 'justo',   corNome: 'Azul médio',     desc: '', foto: '' }
+  { id: 'p1', ordem: 1, nome: 'Blusa Decote Quadrado', tipo: 'blusa',    preco: 129, cor: '#1E1E22', corCat: 'neutro', estilo: 'minimal',   ocasiao: 'trabalho', caimento: 'justo',   corNome: 'Preto',          desc: 'Manga curta e cintura marcada com cinto.', foto: IMG.t1, tamanhos: [] },
+  { id: 'p2', ordem: 2, nome: 'Calça Alfaiataria Bege', tipo: 'calca',   preco: 219, cor: '#D9C2A5', corCat: 'neutro', estilo: 'minimal',   ocasiao: 'trabalho', caimento: 'solto',   corNome: 'Bege',           desc: 'Cintura alta com pregas.', foto: IMG.t2, tamanhos: [] },
+  { id: 'p3', ordem: 3, nome: 'Vestido Tubinho Chocolate', tipo: 'vestido', preco: 259, cor: '#5A2E1B', corCat: 'terra',  estilo: 'ousado',    ocasiao: 'festa',    caimento: 'justo',   corNome: 'Chocolate',      desc: 'Modelagem tomara que caia.', foto: IMG.t3, tamanhos: [] },
+  { id: 'p4', ordem: 4, nome: 'Conjunto Alfaiataria Creme', tipo: 'conjunto', preco: 349, cor: '#EADBC8', corCat: 'neutro', estilo: 'minimal', ocasiao: 'trabalho', caimento: 'solto', corNome: 'Creme',        desc: 'Blazer e calça que combinam.', foto: IMG.t4, tamanhos: [] },
+  { id: 'p5', ordem: 5, nome: 'Blusa Manga Bufante', tipo: 'blusa',     preco: 139, cor: '#D6246E', corCat: 'vivo',   estilo: 'romantico', ocasiao: 'passeio',  caimento: 'justo',   corNome: 'Pink',           desc: 'Decote quadrado e mangas bufantes.', foto: IMG.t5, tamanhos: [] },
+  { id: 'p6', ordem: 6, nome: 'Vestido Floral Rosé',  tipo: 'vestido',  preco: 289, cor: '#E98CAB', corCat: 'rosa',   estilo: 'romantico', ocasiao: 'festa',    caimento: 'cintura', corNome: 'Rosé',           desc: '', foto: '', tamanhos: [] },
+  { id: 'p7', ordem: 7, nome: 'Saia Midi Terracota',  tipo: 'saia',     preco: 179, cor: '#C4551E', corCat: 'terra',  estilo: 'casual',    ocasiao: 'dia',      caimento: 'cintura', corNome: 'Terracota',      desc: '', foto: '', tamanhos: [] },
+  { id: 'p8', ordem: 8, nome: 'Jeans Reta Clássica',  tipo: 'calca',    preco: 259, cor: '#5B7DA8', corCat: 'neutro', estilo: 'casual',    ocasiao: 'dia',      caimento: 'justo',   corNome: 'Azul médio',     desc: '', foto: '', tamanhos: [] }
 ];
 
 /* ===== Listas ===== */
