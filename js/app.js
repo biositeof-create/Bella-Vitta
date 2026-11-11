@@ -240,6 +240,9 @@ app.addEventListener('submit', async e => {
     btn.disabled = true; btn.textContent = 'Salvando…';
     try {
       await gravarProduto(p);
+      cfg.iniciado = true;
+      try { localStorage.setItem(LS, JSON.stringify({ cfg, produtos, fotos: fotosMap })); } catch (e) {}
+      recalcular();
       admin.edit = null; admin.foto = '';
       aviso('Produto salvo.');
       telaAdm();
