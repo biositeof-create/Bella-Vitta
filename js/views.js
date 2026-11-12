@@ -234,6 +234,7 @@ function telaProduto(keep) {
   if (!fotos.length) fotos = cores.map((c, i) => fotosCor(p, i)[0]).filter(Boolean);
   const corSel = state.cor >= 0 ? cores[state.cor] : null;
   const tams = TAMS.filter(t => (p.tamanhos || []).includes(t));
+  const nums = NUMS.filter(n => (p.numeros || []).includes(n));
   if (state.tam && !tams.includes(state.tam)) state.tam = '';
   setView(`
     ${topo('<a class="back" href="#catalogo" data-voltar-cat>← Catálogo</a>')}
@@ -252,9 +253,9 @@ function telaProduto(keep) {
       <div class="pd-l"><span class="lbl">Cores disponíveis</span><span class="pd-v">${corSel ? esc(corSel.nome) : ''}</span></div>
       <div class="sw">${cores.map((c, i) => `<button type="button" class="swb${i === state.cor ? ' on' : ''}" data-cor="${i}" aria-pressed="${i === state.cor}" aria-label="Cor ${esc(c.nome)}"><i style="background:${corOk(c.hex)}"></i><span>${esc(c.nome)}</span></button>`).join('')}</div>
     </section>` : ''}
-    ${tams.length ? `<section class="pd-s" aria-label="Tamanhos">
+    ${tams.length || nums.length ? `<section class="pd-s" aria-label="Tamanhos">
       <div class="pd-l"><span class="lbl">Tamanhos</span></div>
-      <div class="tams">${tams.map(t => `<button type="button" class="tam${t === state.tam ? ' on' : ''}" data-tam="${t}" aria-pressed="${t === state.tam}">${t}</button>`).join('')}</div>
+      <div class="tams">${[...(tams.length ? tams : []), ...(nums.length ? nums : [])].map(t => `<button type="button" class="tam${t === state.tam ? ' on' : ''}" data-tam="${t}" aria-pressed="${t === state.tam}">${t}</button>`).join('')}</div>
     </section>` : ''}
     <div class="btns">
       <a class="btn" id="pd-buy" href="${wa(msgCompra(p))}" target="_blank" rel="noopener">${ICO.zap} Quero esta peça</a>
