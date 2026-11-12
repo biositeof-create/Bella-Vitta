@@ -234,7 +234,8 @@ app.addEventListener('submit', async e => {
       corCat: val('f-corcat'), estilo: val('f-estilo'), ocasiao: val('f-ocasiao'), caimento: val('f-caimento'),
       fotos: admin.fotos.filter(fotoOk), foto: admin.fotos.filter(fotoOk)[0] || '',
       cores: (syncCores(), admin.cores.map(c => ({ nome: String(c.nome || '').trim(), hex: corOk(c.hex), fotos: c.fotos.filter(fotoOk) })).filter(c => c.nome)),
-      tamanhos: TAMS.filter(t => Array.from(document.querySelectorAll('input[name="f-tam"]:checked')).some(x => x.value === t))
+      tamanhos: TAMS.filter(t => Array.from(document.querySelectorAll('input[name="f-tam"]:checked')).some(x => x.value === t)),
+    numeros: NUMS.filter(n => Array.from(document.querySelectorAll('input[name="f-num"]:checked')).some(x => x.value === n))
     };
     const btn = document.getElementById('salvar-prod');
     btn.disabled = true; btn.textContent = 'Salvando…';

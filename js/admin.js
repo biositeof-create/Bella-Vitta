@@ -125,6 +125,11 @@ function formProduto() {
         <div class="ck-row">${TAMS.map(t => `<label class="ck"><input type="checkbox" name="f-tam" value="${t}"${admin.tams.includes(t) ? ' checked' : ''}><span>${t}</span></label>`).join('')}</div>
         <small>Marque os tamanhos que você tem. A cliente vê estes tamanhos na página da peça.</small>
       </div>
+      <div class="field">
+        <span class="lbl">Números do sapato</span>
+        <div class="ck-row">${NUMS.map(n => `<label class="ck"><input type="checkbox" name="f-num" value="${n}"${admin.nums.includes(n) ? ' checked' : ''}><span>${n}</span></label>`).join('')}</div>
+        <small>Marque os números que você tem. A cliente vê estes números na página da peça.</small>
+      </div>
       <div class="field"><label for="f-nome">Nome do produto</label><input type="text" id="f-nome" maxlength="80" value="${esc(v.nome)}" required></div>
       <div class="field"><label for="f-desc">Descrição (opcional)</label><textarea id="f-desc" maxlength="200">${esc(v.desc)}</textarea></div>
       <div class="field">
