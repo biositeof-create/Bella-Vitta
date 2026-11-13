@@ -94,10 +94,10 @@ app.addEventListener('click', e => {
     try { sessionStorage.removeItem('bella-adm'); } catch (x) {}
     location.hash = '#inicio'; return;
   }
-  if (t.closest('[data-cancelar]')) { admin.edit = null; admin.foto = ''; admin.fotos = []; admin.cores = []; admin.tams = []; admin.linkFoto = undefined; telaAdm(true); window.scrollTo(0, 0); return; }
-  if (t.closest('[data-novo-prod]')) { admin.edit = { tipo: 'produto', id: null }; admin.foto = ''; admin.fotos = []; admin.cores = []; admin.tams = []; telaAdm(); return; }
+  if (t.closest('[data-cancelar]')) { admin.edit = null; admin.foto = ''; admin.fotos = []; admin.cores = []; admin.tams = []; admin.nums = []; admin.linkFoto = undefined; telaAdm(true); window.scrollTo(0, 0); return; }
+  if (t.closest('[data-novo-prod]')) { admin.edit = { tipo: 'produto', id: null }; admin.foto = ''; admin.fotos = []; admin.cores = []; admin.tams = []; admin.nums = []; telaAdm(); return; }
   const ep = t.closest('[data-edit-prod]');
-  if (ep) { const p = produtos.find(x => x.id === ep.dataset.editProd); admin.edit = { tipo: 'produto', id: ep.dataset.editProd }; admin.foto = p ? fotoOk(p.foto) : ''; admin.fotos = p ? fotosGerais(p).slice() : []; admin.cores = p ? coresProd(p).map(c => ({ nome: c.nome, hex: c.hex, fotos: (c.fotos || []).filter(fotoOk) })) : []; admin.tams = p ? (p.tamanhos || []).slice() : []; telaAdm(); return; }
+  if (ep) { const p = produtos.find(x => x.id === ep.dataset.editProd); admin.edit = { tipo: 'produto', id: ep.dataset.editProd }; admin.foto = p ? fotoOk(p.foto) : ''; admin.fotos = p ? fotosGerais(p).slice() : []; admin.cores = p ? coresProd(p).map(c => ({ nome: c.nome, hex: c.hex, fotos: (c.fotos || []).filter(fotoOk) })) : []; admin.tams = p ? (p.tamanhos || []).slice() : []; admin.nums = p ? (p.numeros || []).slice() : []; telaAdm(); return; }
   const dp = t.closest('[data-del-prod]');
   if (dp) { admin.confirmar = dp.dataset.delProd; telaAdm(true); return; }
   if (t.closest('[data-del-nao]')) { admin.confirmar = null; telaAdm(true); return; }
@@ -151,6 +151,9 @@ app.addEventListener('click', e => {
 });
 
 app.addEventListener('change', async e => {
+  const nm = e.target.name;
+  if (nm === 'f-tam') admin.tams = TAMS.filter(t => Array.from(document.querySelectorAll('input[name="f-tam"]:checked')).some(x => x.value === t));
+  if (nm === 'f-num') admin.nums = NUMS.filter(n => Array.from(document.querySelectorAll('input[name="f-num"]:checked')).some(x => x.value === n));
   const id = e.target.id;
   const cf = e.target.dataset && e.target.dataset.corFotos;
   if (id === 'f-fotos' || cf !== undefined) { await addFotos(e.target, cf); return; }
@@ -235,7 +238,7 @@ app.addEventListener('submit', async e => {
       fotos: admin.fotos.filter(fotoOk), foto: admin.fotos.filter(fotoOk)[0] || '',
       cores: (syncCores(), admin.cores.map(c => ({ nome: String(c.nome || '').trim(), hex: corOk(c.hex), fotos: c.fotos.filter(fotoOk) })).filter(c => c.nome)),
       tamanhos: TAMS.filter(t => Array.from(document.querySelectorAll('input[name="f-tam"]:checked')).some(x => x.value === t)),
-    numeros: NUMS.filter(n => Array.from(document.querySelectorAll('input[name="f-num"]:checked')).some(x => x.value === n))
+      numeros: NUMS.filter(n => Array.from(document.querySelectorAll('input[name="f-num"]:checked')).some(x => x.value === n))
     };
     const btn = document.getElementById('salvar-prod');
     btn.disabled = true; btn.textContent = 'Salvando…';

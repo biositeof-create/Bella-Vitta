@@ -7,7 +7,7 @@ let semeado = false;
 let fotosMap = {};
 const store = { db: null };
 const state = { q: 0, resp: {}, result: null, filtro: null, fixar: false, prod: null, cor: -2, tam: '' };
-const admin = { logado: false, aba: 'produtos', edit: null, confirmar: null, foto: '', fotos: [], cores: [], tams: [], linkFoto: undefined };
+const admin = { logado: false, aba: 'produtos', edit: null, confirmar: null, foto: '', fotos: [], cores: [], tams: [], nums: [], linkFoto: undefined };
 const app = document.getElementById('app');
 try { admin.logado = sessionStorage.getItem('bella-adm') === '1'; } catch (e) {}
 
@@ -25,7 +25,15 @@ const DEF_SLOT = { hero: 'hero', sobre: 'hero', quiz: 't5', bn1: 'hero', bn2: 't
 const fotoSlot = k => fotoOk(fotosMap[k]) || (k === 'hero' && fotoOk(cfg.heroFoto)) || (k.startsWith('cat_') ? IMG[CAT_IMG[k.slice(4)]] : IMG[DEF_SLOT[k]]) || '';
 const fotoLink = id => fotoOk(fotosMap['link-' + id]);
 const TAMS = ['PP', 'P', 'M', 'G', 'GG', 'Plus'];
+const NUMS = Array.from({ length: 13 }, (_, i) => String(33 + i));
 const MAX_FOTOS = 8;
+const medidasTxt = p => {
+  const n = NUMS.filter(x => (p.numeros || []).includes(x)), t = TAMS.filter(x => (p.tamanhos || []).includes(x));
+  const partes = [];
+  if (t.length) partes.push('Tam. ' + t.join(' · '));
+  if (n.length) partes.push('Nº ' + n.join(' · '));
+  return partes.length ? `<p class="card-m">${partes.join('  |  ')}</p>` : '';
+};
 const tiposAll = () => { const t = { ...TIPOS }; (cfg.cats || []).forEach(c => { if (c && c.k) t[c.k] = c.nome; }); return t; };
 const filtrosAll = () => { const f = { ...FILTROS }; (cfg.cats || []).forEach(c => { if (c && c.k) f[c.k] = c.nome; }); return f; };
 const fotosGerais = p => (Array.isArray(p.fotos) && p.fotos.length ? p.fotos : (p.foto ? [p.foto] : [])).filter(fotoOk);

@@ -298,6 +298,7 @@ function telaCatalogo(keep) {
             <p class="card-m">${esc(p.desc || p.corNome)}</p>
           </div>
           <p class="card-p${temPreco(p) ? '' : ' consulte'}">${precoTxt(p)}</p>
+          ${medidasTxt(p)}
           <a class="buy" href="${wa('Oi! Quero a peça *' + p.nome + '*' + (temPreco(p) ? ' (' + brl(p.preco) + ')' : '') + '. Ainda tem disponível?')}" target="_blank" rel="noopener">Quero esta peça</a>
         </article>`).join('')}
     </div>` : '<p class="empty">Ainda não há peças nesta categoria.</p>'}
